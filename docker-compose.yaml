@@ -1,0 +1,26 @@
+version: '3.0'
+services:
+  dev-db:
+    image: postgres:13.0
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: amine
+      POSTGRES_PASSWORD: randompassword
+      POSTGRES_DB: nest
+    networks:
+      - nest-dev
+    # restart: always
+  test-db:
+    image: postgres:13.0
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_USER: amine
+      POSTGRES_PASSWORD: randompassword
+      POSTGRES_DB: nest
+    networks:
+      - nest-dev
+    # restart: always
+networks:
+  nest-dev:
