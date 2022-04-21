@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Patch, Post } from '@nestjs/common';
 import { CreateUserDto, UpdateUserDto } from './dto';
 import { UserService } from './user.service';
 
@@ -31,6 +31,7 @@ export class UserController {
         return this.userService.updateUserById(dto, userId);
     }
 
+    @HttpCode(HttpStatus.NO_CONTENT)
     @Delete(':id')
     deleteUserById(@Param('id', ParseIntPipe) userId: number) {
         return this.userService.deleteUserById(userId);
